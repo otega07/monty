@@ -5,12 +5,11 @@
  * @head: stack head
  * Return: void
  */
-void f_div(stack_ **head, unsigned int counter)
+void f_div(stack_t **head, unsigned int counter)
 {
-	stack_t *h;
+	stack_t *h = *head;
 	int len = 0, aux;
 
-	h = *head;
 	while (h)
 	{
 		h = h->next;
@@ -25,7 +24,7 @@ void f_div(stack_ **head, unsigned int counter)
 		exit(EXIT_FAILURE);
 	}
 	h = *head;
-	if (h-> == 0)
+	if (h->n == 0)
 	{
 		fprintf(stderr, "L%d: div by zero\n", counter);
 		fclose(bus.file);
@@ -33,7 +32,7 @@ void f_div(stack_ **head, unsigned int counter)
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-	aux = h->next / h->n;
+	aux = h->next->n / h->n;
 	h->next->n = aux;
 	*head = h->next;
 	free(h);
